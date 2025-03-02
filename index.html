@@ -4,10 +4,166 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-<style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<style>
+   
+        .popup-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .popup-content p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .close-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+ 
+ <style>  
+
 .ui-link-helper svg {
 	width: 22px;
 }
+
+.containerrrr {
+            width: 100% !important;
+            /* max-width: 800px; */
+            /* margin: 20px;
+            padding: 20px; */
+			margin-bottom: 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: rgb(17, 17, 17);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            padding: 15px 20px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .label {
+            font-size: 0.9em;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .number {
+                font-size: 2em;
+                padding: 10px 15px;
+            }
+            
+            .time-unit {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .containerrrr{
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .countdown {
+                gap: 10px;
+                padding: 20px;
+            }
+
+            .number {
+                font-size: 1.5em;
+                padding: 8px 12px;
+            }
+
+            .label {
+                font-size: 0.8em;
+            }
+        }
 
 .ui-link-helper{
     display: none !important;
@@ -116,6 +272,219 @@
   }
 }
 </style>
+
+<style>
+
+
+	.team-container {
+		max-width: 1200px;
+		margin: 4rem auto;
+		padding: 0 2rem;
+	}
+
+	.team-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+		justify-content: center;
+	}
+
+	.team-card {
+		background: #1a1a1a;
+		border-radius: 15px;
+		overflow: hidden;
+		position: relative;
+		transition: transform 0.3s ease;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+	}
+
+	.team-card:hover {
+		transform: translateY(-10px);
+	}
+
+	.card-image {
+		height: 350px;
+		overflow: hidden;
+		position: relative;
+		object-fit: cover;
+	}
+
+	.card-image img {
+		width: 100%;
+		height: 100% !important;
+		object-fit: cover !important;
+		transition: transform 0.3s ease;
+	}
+
+	.team-card:hover .card-image img {
+		transform: scale(1.1);
+	}
+
+	.card-content {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: linear-gradient(transparent, rgba(0,0,0,0.9));
+		padding: 2rem;
+		color: white;
+		transform: translateY(100%);
+		transition: transform 0.3s ease;
+	}
+
+	.team-card:hover .card-content {
+		transform: translateY(0);
+	}
+
+	.card-content h3 {
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.card-content p {
+		color: rgb(121, 218, 218);
+		font-size: 0.9rem;
+	}
+
+	.social-links {
+		margin-top: 1rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.team-card:hover .social-links {
+		opacity: 1;
+	}
+
+	.social-links a {
+		color: #fff;
+		margin-right: 1rem;
+		transition: color 0.3s ease;
+	}
+
+	.social-links a:hover {
+		color: #00ff88;
+	}
+
+	@media (max-width: 768px) {
+		.team-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* Animation */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.team-card {
+		animation: fadeInUp 0.6s ease forwards;
+		opacity: 0;
+	}
+
+	.team-card:nth-child(1) { animation-delay: 0.2s; }
+	.team-card:nth-child(2) { animation-delay: 0.4s; }
+	.team-card:nth-child(3) { animation-delay: 0.6s; }
+	.team-card:nth-child(4) { animation-delay: 0.8s; }
+	.team-card:nth-child(5) { animation-delay: 1s; }
+
+
+@media (hover: none) and (max-width: 768px) {
+	.team-card {
+		transform: translateY(0) !important;
+	}
+	
+	.card-content {
+		transform: translateY(0) !important;
+		background: linear-gradient(transparent, rgba(0,0,0,0.7));
+	}
+	
+	.social-links {
+		opacity: 1 !important;
+	}
+	
+	.team-card .card-image img {
+		transform: scale(1) !important;
+	}
+}
+
+</style>
+<style>
+	/* Updated card styles */
+	.team-card {
+		background: #1a1a1a;
+		border-radius: 20px;
+		overflow: hidden;
+		position: relative;
+		transition: all 0.3s ease;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+		border: 2px solid #2a2a2a;
+		margin: 0.5rem;
+	}
+
+	/* Narrower card layout */
+	.team-grid {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
+	}
+
+	/* Enhanced border effects */
+	.team-card:hover {
+		border: 2px solid #00ff88;
+		box-shadow: 0 0 25px rgba(0,255,136,0.2);
+	}
+
+	/* Gradient border animation */
+	.team-card::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 20px;
+		padding: 2px;
+		background: linear-gradient(45deg, #2a2a2a, #00ff88);
+		-webkit-mask: 
+			linear-gradient(#fff 0 0) content-box, 
+			linear-gradient(#fff 0 0);
+		mask: 
+			linear-gradient(#fff 0 0) content-box, 
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.team-card:hover::before {
+		opacity: 1;
+	}
+
+	/* Mobile border adjustment */
+	@media (max-width: 768px) {
+		.team-card {
+			border: 2px solid #333;
+		}
+	}
+
+	.textss{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 3rem;
+		color: #fff;
+	}
+
+	.textss h1{
+		color: #fff;
+	}
+</style>
 <title>Digital Agency &#8211; Outgrid WordPress Theme</title>
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
@@ -215,10 +584,10 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		        </div>
 		        <div class='uicore-nav-menu'>
             <div class="uicore-menu-container uicore-nav"><ul data-uils="header-menu" data-uils-title="Navigation Menu" class="uicore-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-12 current_page_item menu-item-333"><a href="index.html" aria-current="page"><span class="ui-menu-item-wrapper">Home</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-334"><a href="about-us/index.html"><span class="ui-menu-item-wrapper">About us</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="services/index.html"><span class="ui-menu-item-wrapper">Services</span></a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440"><a href="portfolio/index.html"><span class="ui-menu-item-wrapper">Portfolio</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335"><a href="contact/index.html"><span class="ui-menu-item-wrapper">Contact</span></a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-244 current_page_item menu-item-334"><a href="about-us/index.html" aria-current="page"><span class="ui-menu-item-wrapper">About us</span></a></li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="about-us/index.html#section-two"><span class="ui-menu-item-wrapper">Our Team</span></a></li>
+				<!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440"><a href="#section-three"><span class="ui-menu-item-wrapper">Sponsors</span></a></li> -->
+				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335"><a href="about-us/index.html#section-four"><span class="ui-menu-item-wrapper">Event Shedule</span></a></li>
 </ul></div>        </div>
 		<div class="uicore-mobile-head-right">            <button type="button" class="uicore-toggle uicore-ham" aria-label="mobile-menu">
                 <span class="bars">
@@ -250,7 +619,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-7336eef ui-e-a-animate elementor-invisible elementor-widget elementor-widget-highlighted-text" data-id="7336eef" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInDown&quot;,&quot;_animation_delay&quot;:120}" data-widget_type="highlighted-text.default">
 				<div class="elementor-widget-container">
 					<h1 class="ui-e--highlighted-text" >
-        <span class="ui-e-headline-text elementor-repeater-item-d2ae2a3">DIGITAL DREAMS </span><span class="ui-e-highlight-image elementor-repeater-item-118e876"><img decoding="async" width="128" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Hero-Image.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-4987851"> REAL RESULTS</span>        </h1>
+        <span class="ui-e-headline-text elementor-repeater-item-d2ae2a3">AKSU  </span><span class="ui-e-highlight-image elementor-repeater-item-118e876"><img decoding="async" width="128" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Hero-Image.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-4987851"> INNOVATION SUMMIT</span>        </h1>
         		</div>
 				</div>
 					</div>
@@ -259,7 +628,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-32b74cd elementor-invisible elementor-widget elementor-widget-text-editor" data-id="32b74cd" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInDown&quot;,&quot;_animation_delay&quot;:120}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							We are a seasoned team of digital marketing experts specializing in expanding businesses through creative strategies that strengthen brands.						</div>
+					Empowering IT excellence and innovation: Join NACOS AKSU to celebrate over 20 years of driving computing development in Nigeria!					</div>
 				</div>
 				<div class="elementor-element elementor-element-b53666b elementor-widget__width-auto elementor-absolute elementor-view-default elementor-invisible elementor-widget elementor-widget-icon" data-id="b53666b" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;rotateIn&quot;,&quot;_animation_delay&quot;:1200}" data-widget_type="icon.default">
 				<div class="elementor-widget-container">
@@ -272,11 +641,11 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 				<div class="elementor-element elementor-element-29fd2ad elementor-invisible elementor-widget elementor-widget-button" data-id="29fd2ad" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInDown&quot;,&quot;_animation_delay&quot;:120}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+					<a class="elementor-button elementor-button-link elementor-size-sm" href="https://lu.ma/NACOS-AKSU">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
-									<span class="elementor-button-text">GET STARTED</span>
+									<span class="elementor-button-text">Submit</span>
 					</span>
 					</a>
 				</div>
@@ -289,18 +658,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 				<div class="elementor-element elementor-element-7314233 elementor-align-center elementor-invisible elementor-widget elementor-widget-lightbox" data-id="7314233" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="lightbox.default">
 				<div class="elementor-widget-container">
 			        <div id="bdt-lightbox-7314233" class="bdt-lightbox-wrapper bdt-shadow-pulse">              
-			<div data-bdt-lightbox=" animation: slide; video-autoplay: true;">			
-
-			    <a data-elementor-open-lightbox="no" class="elementor-button elementor-size-md" href="https://www.youtube.com/watch?v=L6UddkUrmk8">
-
-			    	
-									    	<span >
-							<svg aria-hidden="true" class="fa-fw e-font-icon-svg e-fas-play" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>						</span>
-					
-							    	</a>
-
-				
-			</div>     
+		  
         </div>
         		</div>
 				</div>
@@ -312,7 +670,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 				<div class="elementor-widget-container">
 					<ul class="elementor-icon-list-items elementor-inline-items">
 							<li class="elementor-icon-list-item elementor-inline-item">
-										<span class="elementor-icon-list-text">DIGITAL MARKETING AGENCY</span>
+										<span class="elementor-icon-list-text">AKSU INNOVATION SUBMIT</span>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
 											<span class="elementor-icon-list-icon">
@@ -320,7 +678,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 										<span class="elementor-icon-list-text"></span>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
-										<span class="elementor-icon-list-text">DIGITAL MARKETING AGENCY</span>
+										<span class="elementor-icon-list-text">NACOS</span>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
 											<span class="elementor-icon-list-icon">
@@ -328,7 +686,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 										<span class="elementor-icon-list-text"></span>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
-										<span class="elementor-icon-list-text">DIGITAL MARKETING AGENCY</span>
+										<span class="elementor-icon-list-text">AKSU INNOVATION SUBMIT</span>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
 											<span class="elementor-icon-list-icon">
@@ -346,6 +704,13 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		</div>
 					</div>
 		</div>
+
+
+
+
+
+
+		
 				<div class="elementor-section elementor-top-section elementor-element elementor-element-b719a32 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="b719a32" data-element_type="section">
 						<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-775f4d6" data-id="775f4d6" data-element_type="column">
@@ -356,7 +721,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-14c6d55 elementor-invisible elementor-widget elementor-widget-heading" data-id="14c6d55" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:0}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">SERVICES</h2>		</div>
+			<h2 class="elementor-heading-title elementor-size-default">Sub-themes</h2>		</div>
 				</div>
 					</div>
 		</div>
@@ -364,7 +729,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-1310dbd elementor-invisible elementor-widget elementor-widget-text-editor" data-id="1310dbd" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Empower your brand online with our digital marketing services. We transform clicks into customers and conversations into conversions.						</div>
+					Exploring innovation, technology, and future trends in computing through insightful discussions, skill-building workshops, and interactive sessions.					</div>
 				</div>
 					</div>
 		</div>
@@ -376,7 +741,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-b7f7808 elementor-invisible elementor-widget elementor-widget-image" data-id="b7f7808" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img fetchpriority="high" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-1.webp" class="attachment-full size-full wp-image-20" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-1.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-1-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+<img fetchpriority="high" style="height: 5rem !important; object-fit: cover;" decoding="async" width="400" height="128" src="img/a1.jpeg" class="attachment-full size-full wp-image-20" alt="" 
+srcset="img/a1.jpeg 400w, img/a1.jpeg 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -384,7 +750,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-e4a6c06 elementor-invisible elementor-widget elementor-widget-heading" data-id="e4a6c06" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">BRANDING STRATEGY</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">AI & ML</h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -392,7 +758,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-81a3717 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="81a3717" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Design a cohesive visual language that tells a story about your business.						</div>
+					Artificial Intelligence and Machine Learning: Effective Application in Education 					</div>
 				</div>
 					</div>
 		</div>
@@ -401,7 +767,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-6d7ffa4 elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="6d7ffa4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -420,7 +786,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-9ac9783 elementor-invisible elementor-widget elementor-widget-image" data-id="9ac9783" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-2.webp" class="attachment-full size-full wp-image-21" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-2.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-2-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+<img decoding="async" style="height: 5rem !important; object-fit: cover;" width="400" height="128" src="img/a2.jpg" class="attachment-full size-full wp-image-21" alt="" 
+srcset="img/a2.jpg 400w, img/a2.jpg 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -428,7 +795,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-65e76f8 elementor-invisible elementor-widget elementor-widget-heading" data-id="65e76f8" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">SOCIAL MEDIA DESIGN</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">Cybersecurity and Data Privacy</h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -436,7 +803,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-47fb295 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="47fb295" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Increase your brand awareness using eye catching &#038; viral design.						</div>
+					Youth Approach to Tackling Cybercrime					</div>
 				</div>
 					</div>
 		</div>
@@ -445,7 +812,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-2148e58 elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="2148e58" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -464,7 +831,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-02014d9 elementor-invisible elementor-widget elementor-widget-image" data-id="02014d9" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img loading="lazy" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-3.webp" class="attachment-full size-full wp-image-22" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-3.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-3-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+<img loading="lazy" style="height: 5rem !important; object-fit: cover;" decoding="async" width="400" height="128" src="img/a3.jpeg" class="attachment-full size-full wp-image-22" alt="" 
+srcset="img/a3.jpeg 400w, img/a3.jpeg 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -472,7 +840,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-1f60aa4 elementor-invisible elementor-widget elementor-widget-heading" data-id="1f60aa4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">LANDING PAGE</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">Blockchain And Cryptocurrency</h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -480,7 +848,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-b9eeb1e elementor-invisible elementor-widget elementor-widget-text-editor" data-id="b9eeb1e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Convert more visitors into customers with our user-friendly website and compelling call-to-action.						</div>
+					Unlocking blockchain potential and cryptocurrency impact on global technology.					</div>
 				</div>
 					</div>
 		</div>
@@ -489,7 +857,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-b18ffda elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="b18ffda" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -508,7 +876,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-0581eb5 elementor-invisible elementor-widget elementor-widget-image" data-id="0581eb5" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img loading="lazy" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4.webp" class="attachment-full size-full wp-image-23" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+													<img style="height: 5rem !important; object-fit: cover;" loading="lazy" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4.webp" class="attachment-full size-full wp-image-23" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-4-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -516,7 +884,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-99bf272 elementor-invisible elementor-widget elementor-widget-heading" data-id="99bf272" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">COPYWRITING</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">Cloud Technology </h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -524,7 +892,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-422cb94 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="422cb94" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Professional copywriting to boost your online presence with SEO-optimized keywords.						</div>
+					Exploring the power and future of cloud-driven technological solutions.						</div>
 				</div>
 					</div>
 		</div>
@@ -533,7 +901,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-3e32c58 elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="3e32c58" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -552,7 +920,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-2a602cb elementor-invisible elementor-widget elementor-widget-image" data-id="2a602cb" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img loading="lazy" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-5.webp" class="attachment-full size-full wp-image-24" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-5.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-5-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+<img loading="lazy" style="height: 5rem !important; object-fit: cover;" decoding="async" width="400" height="128" src="img/a5.jpeg" class="attachment-full size-full wp-image-24" alt="" 
+srcset="img/a5.jpeg 400w, img/a5.jpeg 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -560,7 +929,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-fb30bee elementor-invisible elementor-widget elementor-widget-heading" data-id="fb30bee" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">PRODUCT PHOTOGRAPHY</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">Data Science </h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -568,7 +937,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-5a3f740 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="5a3f740" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Eye catching photography to attract your potential customer.						</div>
+					Unveiling insights and innovations shaping the future of data science.						</div>
 				</div>
 					</div>
 		</div>
@@ -577,7 +946,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-b34a994 elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="b34a994" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -596,7 +965,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-7befb3b elementor-invisible elementor-widget elementor-widget-image" data-id="7befb3b" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:160}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-													<img loading="lazy" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6.webp" class="attachment-full size-full wp-image-25" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
+													<img loading="lazy" style="height: 5rem !important; object-fit: cover;" decoding="async" width="400" height="128" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6.webp" class="attachment-full size-full wp-image-25" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6.webp 400w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Services-Image-6-300x96.webp 300w" sizes="(max-width: 400px) 100vw, 400px" />													</div>
 				</div>
 					</div>
 		</div>
@@ -604,7 +973,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-5ee33ed elementor-invisible elementor-widget elementor-widget-heading" data-id="5ee33ed" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:240}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h3 class="elementor-heading-title elementor-size-default">COMMERCIAL VIDEO</h3>		</div>
+			<h3 class="elementor-heading-title elementor-size-default">SDG & Digital Economy </h3>		</div>
 				</div>
 					</div>
 		</div>
@@ -612,7 +981,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-a38511d elementor-invisible elementor-widget elementor-widget-text-editor" data-id="a38511d" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:320}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							Ready to help you to create commercial video for your Ads, Social Media, or Company Profile.						</div>
+					Driving sustainable development and growth through digital economy innovations, and more..					</div>
 				</div>
 					</div>
 		</div>
@@ -621,7 +990,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-c565f8f elementor-align-right elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="c565f8f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="services/index.html">
+					<a class="elementor-button elementor-button-link elementor-size-sm" style="pointer-events: none !important;" href="services/index.html">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
@@ -646,35 +1015,102 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 						<div class="elementor-element elementor-element-f306d16 ui-e-a-animate elementor-widget elementor-widget-highlighted-text" data-id="f306d16" data-element_type="widget" data-widget_type="highlighted-text.default">
 				<div class="elementor-widget-container">
 					<h2 class="ui-e--highlighted-text" >
-        <span class="ui-e-headline-text elementor-repeater-item-d5b5965">Unleashing Success </span><span class="ui-e-highlight-image elementor-repeater-item-9fd4b97"><img loading="lazy" decoding="async" width="144" height="144" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-1.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-6c8d084"> in the Digital realm Through Creative </span><span class="ui-e-highlight-image elementor-repeater-item-10c251f"><img loading="lazy" decoding="async" width="300" height="58" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-300x58.webp" class="char" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-300x58.webp 300w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-650x125.webp 650w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3.webp 752w" sizes="(max-width: 300px) 100vw, 300px" /></span><span class="ui-e-headline-text elementor-repeater-item-b416de7"> Excellence, </span><span class="ui-e-highlight-image elementor-repeater-item-5fcbecd"><img loading="lazy" decoding="async" width="144" height="144" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-2.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-82430f5"> Data-Driven Mastery, and </span><span class="ui-e-highlight-image elementor-repeater-item-9f2f9c1"><img loading="lazy" decoding="async" width="288" height="145" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-4.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-cd189a2"> Unparalleled Engagement.</span>        </h2>
+        <span class="ui-e-headline-text elementor-repeater-item-d5b5965">Join </span><span class="ui-e-highlight-image elementor-repeater-item-9fd4b97"><img loading="lazy" decoding="async" width="144" height="144" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-1.webp" class="char" alt="" /></span>
+		<span class="ui-e-headline-text elementor-repeater-item-6c8d084"> NACOS AKSU Innovation Summit to  explore</span><span class="ui-e-highlight-image elementor-repeater-item-10c251f"><img loading="lazy" decoding="async" width="300" height="58" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-300x58.webp" class="char" alt="" srcset="https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-300x58.webp 300w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3-650x125.webp 650w, https://outgrid.uicore.co/digital-agency-2/wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-3.webp 752w" sizes="(max-width: 300px) 100vw, 300px" /></span>
+		<span class="ui-e-headline-text elementor-repeater-item-b416de7"> tech trends </span><span class="ui-e-highlight-image elementor-repeater-item-5fcbecd"><img loading="lazy" decoding="async" width="144" height="144" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-2.webp" class="char" alt="" /></span>
+		<span class="ui-e-headline-text elementor-repeater-item-82430f5">network, and showcase groundbreaking</span><span class="ui-e-highlight-image elementor-repeater-item-9f2f9c1"><img loading="lazy" decoding="async" width="288" height="145" src="wp-content/uploads/sites/49/2024/01/Digital-Agency-Unleashing-Image-4.webp" class="char" alt="" /></span><span class="ui-e-headline-text elementor-repeater-item-cd189a2"> solutions shaping the future.</span>        </h2>
         		</div>
 				</div>
 					</div>
 		</div>
 					</div>
 		</section>
-				<section class="elementor-section elementor-top-section elementor-element elementor-element-32e16e9 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="32e16e9" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8d28c16" data-id="8d28c16" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-b082069 elementor-invisible elementor-widget elementor-widget-heading" data-id="b082069" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:80}" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">PORTFOLIO</h2>		</div>
-				</div>
-				<div class="elementor-element elementor-element-9ff369f elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor" data-id="9ff369f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:80}" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-							We&#8217;re a Digital Agency creating online presence for big names. 
-We have the best team to create an outstanding results.						</div>
-				</div>
-				<div class="elementor-element elementor-element-edf0e84 elementor-invisible elementor-widget elementor-widget-uicore-post-grid" data-id="edf0e84" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="uicore-post-grid.default">
-				<div class="elementor-widget-container">
-			No Posts Found!		</div>
-				</div>
-					</div>
-		</div>
-					</div>
-		</section>
-				<section class="elementor-section elementor-top-section elementor-element elementor-element-7ab5d43 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="7ab5d43" data-element_type="section">
+
+		<div class="team-container">
+			<div class="textss">
+			  <h2>SPEAKERS</h2>
+			</div>
+			  <div class="team-grid">
+				  <!-- Top Row -->
+				  <div class="team-card">
+					  <div class="card-image">
+						  <img src="img/b5.jpeg" alt="Team Member">
+					  </div>
+					  <div class="card-content">
+						  <h3>Lucie EKong</h3>
+						  <p>Data Warehousing and Artificial Intelligence <br/>Personal Assistant to the Govenor </p>
+						  <div class="social-links">
+							  <a href="#"><i class="fab fa-linkedin"></i></a>
+							  <a href="#"><i class="fab fa-twitter"></i></a>
+							  <a href="#"><i class="fab fa-github"></i></a>
+						  </div>
+					  </div>
+				  </div>
+	  
+				  <div class="team-card">
+					  <div class="card-image">
+						  <img src="img/b4.jpeg" alt="Team Member">
+					  </div>
+					  <div class="card-content">
+						  <h3>Hanson Johnson </h3>
+						  <p>Start Innovation Hub CEO , Software Engineer</p>
+						  <div class="social-links">
+							  <a href="#"><i class="fab fa-linkedin"></i></a>
+							  <a href="#"><i class="fab fa-instagram"></i></a>
+							  <a href="#"><i class="fab fa-dribbble"></i></a>
+						  </div>
+					  </div>
+				  </div>
+	  
+				  <div class="team-card">
+					  <div class="card-image">
+						  <img src="img/b3.jpeg" alt="Team Member">
+					  </div>
+					  <div class="card-content">
+						  <h3>Godswill Akpan </h3>
+						  <p>For the Love of Defi(FTLD)<br/> Chief Executive Officer</p>
+						  <div class="social-links">
+							  <a href="#"><i class="fab fa-behance"></i></a>
+							  <a href="#"><i class="fab fa-pinterest"></i></a>
+							  <a href="#"><i class="fab fa-twitter"></i></a>
+						  </div>
+					  </div>
+				  </div>
+	  
+				  <!-- Bottom Row -->
+				  <div class="team-card">
+					  <div class="card-image">
+						  <img src="img/b2.jpeg" alt="Team Member">
+					  </div>
+					  <div class="card-content">
+						  <h3>Orok Godspower </h3>
+						  <p>Crypto Investment Coach<br/> CoinEx country Manager </p>
+						  <div class="social-links">
+							  <a href="#"><i class="fab fa-facebook"></i></a>
+							  <a href="#"><i class="fab fa-linkedin"></i></a>
+							  <a href="#"><i class="fab fa-youtube"></i></a>
+						  </div>
+					  </div>
+				  </div>
+	  
+				  <div class="team-card">
+					  <div class="card-image">
+						  <img src="img/b1.jpeg" alt="Team Member">
+					  </div>
+					  <div class="card-content">
+						  <h3>Davizoe Effiong </h3>
+						  <p>CEO BEI Consultancy LTD</p>
+						  <div class="social-links">
+							  <a href="#"><i class="fab fa-github"></i></a>
+							  <a href="#"><i class="fab fa-twitch"></i></a>
+							  <a href="#"><i class="fab fa-discord"></i></a>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+				
+				<!-- <section class="elementor-section elementor-top-section elementor-element elementor-element-7ab5d43 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="7ab5d43" data-element_type="section">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3c867c3" data-id="3c867c3" data-element_type="column">
 			<div class="elementor-widget-wrap elementor-element-populated">
@@ -786,7 +1222,7 @@ We have the best team to create an outstanding results.						</div>
 					</div>
 		</div>
 					</div>
-		</section>
+		</section> -->
 				<div class="elementor-section elementor-top-section elementor-element elementor-element-87dd1f4 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="87dd1f4" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-d526818" data-id="d526818" data-element_type="column">
@@ -853,16 +1289,59 @@ We have the best team to create an outstanding results.						</div>
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-2b33487 elementor-invisible elementor-widget elementor-widget-heading" data-id="2b33487" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h2 class="elementor-heading-title elementor-size-default">Elevate your brand in the digital world. Contact us to get started!</h2>		</div>
+			<h2 class="elementor-heading-title elementor-size-default">Venue </h2>	<div class="ven">
+				<p >New Auditorium, Akwa Ibom State University,
+					Main Campus, Ikot Akpaden, Mkpat Enin LGA. Akwa Ibom State.</p>
+			</div>		</div>
+
+		
+		
+		
+			<style>
+			.ven{
+				width: 100%;
+				padding: 0 20%;
+				margin-top: 0.7rem;
+				display: fle;
+			}
+			 @media (max-width: 700px) {
+				.ven{
+					padding: 0 5%;
+				}
+			 }
+			</style>
 				</div>
+				
 				<div class="elementor-element elementor-element-91b14e4 elementor-align-center elementor-invisible elementor-widget elementor-widget-button" data-id="91b14e4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="button.default">
-				<div class="elementor-widget-container">
-							<div class="elementor-button-wrapper">
-					<a class="elementor-button elementor-button-link elementor-size-sm" href="contact/index.html">
+				
+					<div class="elementor-widget-container">
+							
+						<div class="elementor-button-wrapper">
+							<div class="containerrrr">
+								<div class="countdown">
+									<div class="time-unit">
+										<div class="number" id="days">00</div>
+										<div class="label">Days</div>
+									</div>
+									<div class="time-unit">
+										<div class="number" id="hours">00</div>
+										<div class="label">Hours</div>
+									</div>
+									<div class="time-unit">
+										<div class="number" id="minutes">00</div>
+										<div class="label">Minutes</div>
+									</div>
+									<div class="time-unit">
+										<div class="number" id="seconds">00</div>
+										<div class="label">Seconds</div>
+									</div>
+								</div>
+							</div>
+							<a class="elementor-button elementor-button-link elementor-size-sm" target="_blank" href="https://www.google.com/maps/place/Main+Auditorium/@4.7939298,7.5978731,11z/data=!4m7!3m6!1s0x1068754b4f67f6a7:0x9eef1ce5c25e8cc4!8m2!3d4.6223372!4d7.7648251!15sChNuZXcgYXVkaXRvcml1bSBha3N1kgEGc2Nob29s4AEA!16s%2Fg%2F11grprzc17?entry=tts">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<i aria-hidden="true" class="ti ti-arrow-top-right"></i>			</span>
-									<span class="elementor-button-text">CONTACT US</span>
+									<span class="elementor-button-text">View location on map</span>
 					</span>
 					</a>
 				</div>
@@ -896,11 +1375,11 @@ We have the best team to create an outstanding results.						</div>
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-bada8ad elementor-widget elementor-widget-heading" data-id="bada8ad" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h5 class="elementor-heading-title elementor-size-default">OUR OFFICE</h5>		</div>
+			<h5 class="elementor-heading-title elementor-size-default">Location</h5>		</div>
 				</div>
 				<div class="elementor-element elementor-element-e6115a0 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor" data-id="e6115a0" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							<p><a href="#">San Francisco, CA 1234 Ocean View Drive, San Francisco, CA 94110</a></p>						</div>
+							<p><a href="#">ikot akpaden, akwa ibom state.</a></p>						</div>
 				</div>
 					</div>
 		</div>
@@ -914,27 +1393,37 @@ We have the best team to create an outstanding results.						</div>
 				<div class="elementor-widget-container">
 					<div class="elementor-social-icons-wrapper elementor-grid">
 							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-ff2fccb" target="_blank">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-ff2fccb" href="https://www.linkedin.com/in/nacos-desk-aksu-9324392ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
 						<span class="elementor-screen-only">Linkedin</span>
 						<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>					</a>
 				</span>
 							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-6551f34" target="_blank">
-						<span class="elementor-screen-only">Instagram</span>
-						<svg class="e-font-icon-svg e-fab-instagram" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>					</a>
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-6551f34" href="https://www.facebook.com/nacossdesk.aksuchapter" target="_blank">
+						<span class="elementor-screen-only">Facebook</span>
+						<svg class="e-font-icon-svg e-fab-instagram" xmlns="http://www.w3.org/2000/svg" width="2.3rem" height="2.3rem" viewBox="0 0 24 24">
+							<rect width="24" height="24" fill="none" />
+							<path fill="#cecaca" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95" />
+						</svg>
+										</a>
 				</span>
 							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-pinterest elementor-repeater-item-d8a28d6" target="_blank">
-						<span class="elementor-screen-only">Pinterest</span>
-						<svg class="e-font-icon-svg e-fab-pinterest" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"></path></svg>					</a>
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-pinterest elementor-repeater-item-d8a28d6" href="mailto:nacosaksuchapter@gmail.com" >
+						<span class="elementor-screen-only">Email</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
+							<rect width="24" height="24" fill="none" />
+							<path fill="#cecaca" d="m20 8l-8 5l-8-5V6l8 5l8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2" />
+						</svg>				</a>
 				</span>
 							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-0f93e61" target="_blank">
-						<span class="elementor-screen-only">Youtube</span>
-						<svg class="e-font-icon-svg e-fab-youtube" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>					</a>
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-0f93e61" href="tel:+2349131170904">
+						<span class="elementor-screen-only">call</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
+							<rect width="24" height="24" fill="none" />
+							<path fill="#cecaca" d="M18.93 20q-2.528 0-5.184-1.266t-4.944-3.555q-2.27-2.288-3.536-4.935T4 5.07q0-.45.3-.76T5.05 4h2.473q.408 0 .712.257t.411.659L9.142 7.3q.07.42-.025.733t-.333.513L6.59 10.592q.616 1.117 1.361 2.076t1.59 1.817q.87.87 1.874 1.62q1.004.749 2.204 1.414l2.139-2.177q.244-.263.549-.347q.304-.083.674-.033l2.103.43q.408.1.662.411t.254.712v2.435q0 .45-.31.75t-.76.3" />
+						</svg>					</a>
 				</span>
 							<span class="elementor-grid-item">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-f982d4e" target="_blank">
+					<a class="elementor-icon  elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-f982d4e" href="tel:+2349131170904" target="_blank">
 						<span class="elementor-screen-only">Twitter</span>
 						<svg class="e-font-icon-svg e-fab-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>					</a>
 				</span>
@@ -951,7 +1440,7 @@ We have the best team to create an outstanding results.						</div>
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-861b1d0 elementor-widget elementor-widget-text-editor" data-id="861b1d0" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-							© 2024 <a href="https://draewe3.vercel.app">Drae Templates &#8211; Premium Web Themes</a>.						</div>
+							© 2025 <a href="https://draewe3.vercel.app">NACOS &#8211; Alrights reserved</a>.						</div>
 				</div>
 					</div>
 		</div>
@@ -961,17 +1450,21 @@ We have the best team to create an outstanding results.						</div>
 				<div class="elementor-widget-container">
 					<ul class="elementor-icon-list-items elementor-inline-items">
 							<li class="elementor-icon-list-item elementor-inline-item">
-											<a href="#">
-
-											<span class="elementor-icon-list-text">Terms & Conditions</span>
-											</a>
+										
+												<button class="popup-button" onclick="openPopup()">Donate Now</button>
+												<div class="popup-overlay" id="popupOverlay">
+													<div class="popup-content">
+														<h3>Account Details</h3>
+														<p><strong>Account Name:</strong> NACOS ASKU</p>
+														<p><strong>Account Number:</strong> 5533180961</p>
+														<p><strong>Bank Name:</strong> Moniepoint</p>
+														<button class="close-button" onclick="closePopup()">Close</button>
+													</div>
+												</div>
+											
+											
 									</li>
-								<li class="elementor-icon-list-item elementor-inline-item">
-											<a href="#">
-
-											<span class="elementor-icon-list-text">Privacy Policy</span>
-											</a>
-									</li>
+						
 						</ul>
 				</div>
 				</div>
@@ -1045,10 +1538,10 @@ We have the best team to create an outstanding results.						</div>
 			</nav>
 			<div class="uicore-navigation-content">
                 <div class="uicore-menu-container uicore-nav"><ul data-uils="header-menu" data-uils-title="Navigation Menu" class="uicore-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-12 current_page_item menu-item-333"><a href="index.html" aria-current="page"><span class="ui-menu-item-wrapper">Home</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-334"><a href="about-us/index.html"><span class="ui-menu-item-wrapper">About us</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="services/index.html"><span class="ui-menu-item-wrapper">Services</span></a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440"><a href="portfolio/index.html"><span class="ui-menu-item-wrapper">Portfolio</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335"><a href="contact/index.html"><span class="ui-menu-item-wrapper">Contact</span></a></li>
+					<li class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-244 current_page_item menu-item-334"><a href="#section-one" aria-current="page"><span class="ui-menu-item-wrapper">About us</span></a></li>
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="about-us/index.html#section-one"><span class="ui-menu-item-wrapper">Our Team</span></a></li>
+					<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440"><a href="#section-three"><span class="ui-menu-item-wrapper">sponsors</span></a></li>
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335"><a href="section-four"><span class="ui-menu-item-wrapper">Event Shedule</span></a></li>
 </ul></div>            </div>
 		</div>
 		<!-- 1.6 uicore_body_end --></div>
@@ -1127,6 +1620,60 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4HRCJB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+	// Set the target date and time (example: 10 days from now)
+	const targetDate = new Date();
+	targetDate.setDate(targetDate.getDate() + 10);
+
+	function updateCountdown() {
+		const currentDate = new Date();
+		const difference = targetDate - currentDate;
+
+		if (difference <= 0) {
+			clearInterval(timerInterval);
+			document.getElementById('days').textContent = '00';
+			document.getElementById('hours').textContent = '00';
+			document.getElementById('minutes').textContent = '00';
+			document.getElementById('seconds').textContent = '00';
+			return;
+		}
+
+		const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+		document.getElementById('days').textContent = days.toString().padStart(2, '0');
+		document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
+		document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+		document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+	}
+
+	// Update countdown every second
+	const timerInterval = setInterval(updateCountdown, 1000);
+	updateCountdown(); // Initial call
+</script>
+<script>
+	// Function to open the popup
+	function openPopup() {
+		const popupOverlay = document.getElementById('popupOverlay');
+		popupOverlay.style.display = 'flex';
+	}
+
+	// Function to close the popup
+	function closePopup() {
+		const popupOverlay = document.getElementById('popupOverlay');
+		popupOverlay.style.display = 'none';
+	}
+
+	// Close popup when clicking outside the content
+	window.onclick = function(event) {
+		const popupOverlay = document.getElementById('popupOverlay');
+		if (event.target === popupOverlay) {
+			popupOverlay.style.display = 'none';
+		}
+	};
+</script>
 <!-- End Google Tag Manager (noscript) --></body>
 
 </html>
